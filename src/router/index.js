@@ -1,29 +1,46 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Vue from "vue";
+import VueRouter from "vue-router";
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
+
+//导入视图组件 (懒加载方式)
+const Home = () => import("views/home/Home");
+const Category = () => import("views/category/Category");
+const Cart = () => import("views/cart/Cart");
+const Profile = () => import("views/profile/Profile");
+//直接导入组件方式:
+//import Home from "views/home/Home";
+//import Category from "views/category/Category";
+//import Cart from "views/cart/Cart";
+//import Profile from "views/profile/Profile";
 
 const routes = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home
+    path: "/",
+    redirect: "/home",
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
-]
+    path: "/home",
+    component: Home,
+  },
+  {
+    path: "/category",
+    component: Category,
+  },
+  {
+    path: "/cart",
+    component: Cart,
+  },
+  {
+    path: "/profile",
+    component: Profile,
+  },
+];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;
