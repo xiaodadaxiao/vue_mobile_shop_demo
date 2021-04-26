@@ -6,6 +6,9 @@ import store from "./store";
 
 Vue.config.productionTip = false;
 
+//创建事件总线
+Vue.prototype.$bus = new Vue();
+
 //直接挂载网络请求的方法
 //Vue.prototype.$http = request;
 

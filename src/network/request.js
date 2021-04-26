@@ -3,7 +3,8 @@ export default function request(config) {
   //创建axios的实例一
   //( 目前项目只有一个实例 ,不同参数可以创建不同实例,对应不同网络请求)
   const instance = axios.create({
-    baseURL: "http://123.207.32.32:8000",
+    //baseURL: "http://123.207.32.32:8000",
+    baseURL: "http://152.136.185.210:7878/api/m5",
     //请求时间最长
     timeout: 5000,
   });
